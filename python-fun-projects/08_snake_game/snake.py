@@ -81,6 +81,7 @@ class SnakeGame:
         pygame.display.set_caption("Snake Game")
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font(None, 36)
+        self.symbol_font = pygame.font.Font(None, int(self.GRID_SIZE * 1.5))
 
         self.snake = Snake(self.GRID_WIDTH, self.GRID_HEIGHT)
         self.food = Food(self.GRID_WIDTH, self.GRID_HEIGHT)
@@ -122,15 +123,20 @@ class SnakeGame:
     def draw(self):
         self.screen.fill(self.COLORS["black"])
 
-        for segment in self.snake.body:
+        for i, segment in enumerate(self.snake.body):
             x, y = segment
-            rect = pygame.Rect(x * self.GRID_SIZE, y * self.GRID_SIZE, self.GRID_SIZE, self.GRID_SIZE)
-            pygame.draw.rect(self.screen, self.COLORS["green"], rect)
-            pygame.draw.rect(self.screen, self.COLORS["white"], rect, 1)
+            symbol = "◉" if i == 0 else "●"
+            color = (100, 255, 100) if i == 0 else (0, 200, 0)
+            sym_surf = self.symbol_font.render(symbol, True, color)
+            sym_rect = sym_surf.get_rect(center=(x * self.GRID_SIZE + self.GRID_SIZE // 2,
+                                                  y * self.GRID_SIZE + self.GRID_SIZE // 2))
+            self.screen.blit(sym_surf, sym_rect)
 
         fx, fy = self.food.position
-        food_rect = pygame.Rect(fx * self.GRID_SIZE, fy * self.GRID_SIZE, self.GRID_SIZE, self.GRID_SIZE)
-        pygame.draw.rect(self.screen, self.COLORS["red"], food_rect)
+        food_surf = self.symbol_font.render("★", True, (255, 200, 50))
+        food_rect = food_surf.get_rect(center=(fx * self.GRID_SIZE + self.GRID_SIZE // 2,
+                                               fy * self.GRID_SIZE + self.GRID_SIZE // 2))
+        self.screen.blit(food_surf, food_rect)
 
         score_text = self.font.render(f"Score: {self.score}", True, self.COLORS["white"])
         self.screen.blit(score_text, (10, 10))
