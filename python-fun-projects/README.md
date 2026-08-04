@@ -25,6 +25,7 @@ A collection of beginner-friendly Python projects to learn coding by making cool
 | 06 | [Password Generator](06_password_generator/password_generator.py) | strings, randomness, colored text |
 | 07 | [Bouncing Ball Game](07_bouncing_ball_game/bouncing_ball.py) | pygame, game loops, animation |
 | 08 | [Snake Game](08_snake_game/snake.py) | classes, game loops, collision detection, enums |
+| 09 | [Jump Quest](09_jump_quest/jump_quest.py) | physics, gravity, dynamic difficulty, scrolling obstacles |
 
 ## Running a project
 
