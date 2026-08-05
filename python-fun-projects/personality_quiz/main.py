@@ -16,3 +16,14 @@ quiz = input("Do you want to take the quiz? (yes/no): ").lower()
 list = []
 list.append(quiz)
 print(list)
+if quiz == "yes":
+    name = input("What's your name? ")
+    animal = input("What's your favorite animal? ")
+    color = input("What's your favorite color? ")
+    hobby = input("What's your favorite hobby? ")
+
+    print(f"\nHi {name}! Since you love {animal} and the color {color},")
+    print(f"your spirit animal energy is: {hobby} Enthusiast! 🐾")
+
+else:
+    print("No worries! Maybe next time.")
